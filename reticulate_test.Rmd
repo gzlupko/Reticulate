@@ -1,0 +1,38 @@
+---
+title: "Reticulate Test"
+author: "Gian Zlupko"
+date: "4/8/2021"
+output: html_document
+---
+
+```{r}
+library(reticulate) 
+library(ggplot2) 
+
+mtcars 
+cars <- mtcars
+
+```
+
+
+# Python in Rmd 
+
+### Load Python Libraries 
+
+
+```{python libraries}
+import pandas as pd 
+
+
+```
+
+
+
+
+```{python data}
+
+print("hello, python!") 
+cars_data = pd.read_csv("cars_data.csv") 
+
+```
+
