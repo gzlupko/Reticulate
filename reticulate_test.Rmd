@@ -7,10 +7,11 @@ output: html_document
 
 ```{r}
 library(reticulate) 
+library(tidyverse) 
 
 data(iris) 
 head(iris) 
-write.csv(iris, "iris.csv") 
+#write.csv(iris, "iris.csv") 
 
 ```
 
@@ -21,30 +22,59 @@ Load sample data using pandas
 ```{python}
 
 import pandas as pd 
+import numpy as np 
 
 # import iris data set using pandas 
 iris = pd.read_csv('iris.csv') 
 
 iris.head(n = 5) 
+iris.head(4) 
 
+# print descriptives for data 
+print(iris.describe())
+
+iris.describe()
+
+# examine columns 
+iris.columns 
+
+# create subset of iris to use in R 
+
+subset_list = ["Sepal.Length", "Sepal.Width"]
+
+iris_subset = pd.DataFrame(data = iris, columns = subset_list) 
+
+iris_subset
+
+iris_subset.describe() 
 
 
 
 
 ```
 
+```{python}
+iris_subset.head(5) 
+```
 
 
 
-```{python libaries}
 
-import pandas as pd 
-import numpy as np 
+```{r}
+# Use py$ to locate objects stored in python 
+df <- py$iris_subset
 
-x = 7
+# now continue to use R 
 
+head(df) 
+
+mod1 <- lm(Sepal.Width ~ Sepal.Width, data = df) %>%
+  summary()
+
+plot(mod1$residuals) 
 
 ```
+
 
 
 
