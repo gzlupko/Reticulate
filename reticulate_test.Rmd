@@ -7,32 +7,44 @@ output: html_document
 
 ```{r}
 library(reticulate) 
-library(ggplot2) 
 
-mtcars 
-cars <- mtcars
+data(iris) 
+head(iris) 
+write.csv(iris, "iris.csv") 
 
 ```
 
 
-# Python in Rmd 
 
-### Load Python Libraries 
+Load sample data using pandas
 
+```{python}
 
-```{python libraries}
 import pandas as pd 
 
+# import iris data set using pandas 
+iris = pd.read_csv('iris.csv') 
+
+iris.head(n = 5) 
+
+
+
+
 
 ```
 
 
 
 
-```{python data}
+```{python libaries}
 
-print("hello, python!") 
-cars_data = pd.read_csv("cars_data.csv") 
+import pandas as pd 
+import numpy as np 
+
+x = 7
+
 
 ```
+
+
 
